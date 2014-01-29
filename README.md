@@ -12,6 +12,6 @@ Instructions to get Java 8 Early Access working with Eclipse can be found [here]
 
 ## Communication
 
-- Forum thread: TBD
+- [Discussion at the Vaadin forum](https://vaadin.com/forum#!/thread/4776077/4776076)
 - Author's Twitter: [@henrimuurimaa](http://twitter.com/henrimuurimaa)
 - [GitHub Issues](https://github.com/hezamu/RxVaadin/issues)
