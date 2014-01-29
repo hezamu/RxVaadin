@@ -1,0 +1,10 @@
+*~
+.cache
+.settings
+.external*
+.DS_Store
+build/*
+WebContent/VAADIN/widgetsets/*
+GWT*
+*.launch
+/build
