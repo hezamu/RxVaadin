@@ -1,6 +1,6 @@
 # RxVaadin: Functional Reactive Programming with Vaadin
 
-This is a quick proof of concept on how to build Vaadin user interfaces using the functional reactive programming approach. It uses the excellent [RxJava library](https://github.com/Netflix/RxJava) from Netflix for Observables. Java 8 is required for lambdas.
+This is a quick proof of concept on how to build Vaadin user interfaces using the [functional reactive programming](http://stackoverflow.com/a/1030631/283077) approach. It uses the excellent [RxJava library](https://github.com/Netflix/RxJava) from Netflix for Observables, and Java 8 is required for lambdas.
 
 ## Getting started
 
