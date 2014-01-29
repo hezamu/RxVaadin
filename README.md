@@ -6,7 +6,7 @@ This is a quick proof of concept on how to build Vaadin user interfaces using th
 
 The UI itself is just two comboboxes, so perhaps perusing the sources is sufficient for most people interested in the topic.
 
-If you want to run run the project anyway, do a checkout and run it in a Java8 compliant servlet container. I'm wrote this in Eclipse Kepler and Jetty using the very nice [Run Jetty](http://code.google.com/p/run-jetty-run) plugin.
+If you want to try the project anyway, do a checkout and run it in a Java8 compliant servlet container. I wrote this in Eclipse Kepler and Jetty using the very nice [Run Jetty](http://code.google.com/p/run-jetty-run) plugin.
 
 Instructions to get Java 8 Early Access working with Eclipse can be found [here](https://wiki.eclipse.org/JDT/Eclipse_Java_8_Support_%28BETA%29)
 
