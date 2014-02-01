@@ -8,13 +8,13 @@
 		<param-value>false</param-value>
 	</context-param>
 	<servlet>
-		<servlet-name>Rxvaadin Application</servlet-name>
+		<servlet-name>RiskCalc</servlet-name>
 		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
 		<init-param>
 			<description>
 			Vaadin UI class to use</description>
 			<param-name>UI</param-name>
-			<param-value>org.vaadin.hezamu.rx.RxUI</param-value>
+			<param-value>org.vaadin.hezamu.rx.RiskCalculatorView</param-value>
 		</init-param>
 		<init-param>
 			<description>
@@ -23,10 +23,30 @@
 			<param-value>false</param-value>
 		</init-param>
 	</servlet>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>PoC</servlet-name> -->
+<!-- 		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class> -->
+<!-- 		<init-param> -->
+<!-- 			<description> -->
+<!-- 			Vaadin UI class to use</description> -->
+<!-- 			<param-name>UI</param-name> -->
+<!-- 			<param-value>org.vaadin.hezamu.rx.RxUI</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<init-param> -->
+<!-- 			<description> -->
+<!-- 			Legacy mode to return the value of the property as a string from AbstractProperty.toString()</description> -->
+<!-- 			<param-name>legacyPropertyToString</param-name> -->
+<!-- 			<param-value>false</param-value> -->
+<!-- 		</init-param> -->
+<!-- 	</servlet> -->
 	<servlet-mapping>
-		<servlet-name>Rxvaadin Application</servlet-name>
+		<servlet-name>RiskCalc</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
+<!-- 	<servlet-mapping> -->
+<!-- 		<servlet-name>PoC</servlet-name> -->
+<!-- 		<url-pattern>/*</url-pattern> Also handles /VAADIN/* for all servlets -->
+<!-- 	</servlet-mapping> -->
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

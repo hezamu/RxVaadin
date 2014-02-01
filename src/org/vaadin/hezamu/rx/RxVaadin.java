@@ -5,6 +5,7 @@ import rx.Observer;
 import rx.Subscription;
 import rx.Observable.OnSubscribeFunc;
 
+import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.data.Property.ValueChangeNotifier;
@@ -18,11 +19,8 @@ import com.vaadin.data.Property.ValueChangeNotifier;
 @SuppressWarnings("serial")
 public class RxVaadin {
 	/**
-	 * Get an {@link Observable} corresponding with the event stream of a
+	 * Get a {@link Observable} corresponding with the event stream of a
 	 * {@link ValueChangeNotifier}.
-	 * 
-	 * @param notifier
-	 * @return
 	 */
 	public static Observable<ValueChangeEvent> valueChangeEvents(
 			ValueChangeNotifier notifier) {
@@ -48,16 +46,55 @@ public class RxVaadin {
 	}
 
 	/**
-	 * Convert a Observable<ValueChangeEvent> into a Observable of values
-	 * represented by the events.
-	 * 
-	 * @param notifier
-	 * @return
+	 * Convert a the stream of {@link ValueChangeEvent}s from a
+	 * {@link ValueChangeNotifier} into a Observable of values contained in the
+	 * events.
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T> Observable<T> values(ValueChangeNotifier notifier) {
-		return valueChangeEvents(notifier).map((ValueChangeEvent vce) -> {
+		return valueChangeEvents(notifier).map(vce -> {
 			return (T) vce.getProperty().getValue();
+		});
+	}
+
+	/**
+	 * Convert a the stream of {@link ValueChangeEvent}s from a
+	 * {@link ValueChangeNotifier} into a Observable of values contained in the
+	 * events. The resulting Observable will have the given value prepended to
+	 * it to make sure it will always have a value.
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Observable<T> valuesWithDefault(
+			ValueChangeNotifier notifier, T defaultValue) {
+		return ((Observable<T>) values(notifier)).startWith(defaultValue);
+	}
+
+	/**
+	 * Hook up a {@link Property} to display the values emitted by a
+	 * {@link Observable}.
+	 */
+	public static <T> void follow(Property<T> target, Observable<T> source) {
+		source.subscribe(value -> {
+			target.setValue(value);
+		});
+	}
+
+	/**
+	 * Hook up a String {@link Property} to clear whenever the given
+	 * {@link Observable} emits a value.
+	 */
+	public static <T> void clearBy(Property<String> target, Observable<T> source) {
+		clearBy(target, source, "");
+	}
+
+	/**
+	 * Hook up a {@link Property} to set to a value whenever the given
+	 * {@link Observable} emits a value.
+	 */
+	public static <T, R> void clearBy(Property<T> target, Observable<R> source,
+			T clearValue) {
+		source.subscribe(value -> {
+			target.setValue(clearValue);
 		});
 	}
 }
