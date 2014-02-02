@@ -12,10 +12,10 @@ Instructions to get Java 8 Early Access working with Eclipse can be found [here]
 
 ## Affliation
 
-This is not an official add-on from Vaadin Ltd. It's just a hobby project 
+This is not an official add-on by Vaadin Ltd.
 
 ## Links
 
 - [Discussion at the Vaadin forum](https://vaadin.com/forum#!/thread/4776077/4776076)
-- Author's Twitter: [@henrimuurimaa](http://twitter.com/henrimuurimaa)
+- [@henrimuurimaa](http://twitter.com/henrimuurimaa)
 - [GitHub Issues](https://github.com/hezamu/RxVaadin/issues)
