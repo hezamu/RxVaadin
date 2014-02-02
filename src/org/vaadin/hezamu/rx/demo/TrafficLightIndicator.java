@@ -1,6 +1,6 @@
-package org.vaadin.hezamu.rx;
+package org.vaadin.hezamu.rx.demo;
 
-import org.vaadin.hezamu.rx.TrafficLightIndicator.TrafficLight;
+import org.vaadin.hezamu.rx.demo.TrafficLightIndicator.TrafficLight;
 
 import com.vaadin.data.Property;
 import com.vaadin.ui.CustomComponent;

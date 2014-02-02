@@ -1,4 +1,4 @@
-package org.vaadin.hezamu.rx;
+package org.vaadin.hezamu.rx.demo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,17 +6,17 @@ import java.util.Set;
 
 import rx.Observable;
 
-public class RiskCalculatorLogic {
+public class DevScoreLogic {
 	public static Observable<Double> scores(Observable<String> coverages,
 			Observable<Set<String>> agilities,
 			Observable<String> teamSizeStrings,
 			Observable<String> pMTechnicalities, Observable<Boolean> vaadinUses) {
 		Observable<Inputs> inputs = Observable.combineLatest(coverages,
 				agilities, teamSizeStrings, pMTechnicalities, vaadinUses,
-				RiskCalculatorLogic::combineInputs);
+				DevScoreLogic::combineInputs);
 
-		return inputs.filter(RiskCalculatorLogic::areInputsValid).map(
-				RiskCalculatorLogic::inputsToScore);
+		return inputs.filter(DevScoreLogic::areInputsValid).map(
+				DevScoreLogic::inputsToScore);
 	}
 
 	public static Observable<List<String>> faults(Observable<String> coverages,
@@ -25,9 +25,9 @@ public class RiskCalculatorLogic {
 			Observable<String> pMTechnicalities, Observable<Boolean> vaadinUses) {
 		Observable<Inputs> inputs = Observable.combineLatest(coverages,
 				agilities, teamSizeStrings, pMTechnicalities, vaadinUses,
-				RiskCalculatorLogic::combineInputs);
+				DevScoreLogic::combineInputs);
 
-		return inputs.map(RiskCalculatorLogic::invalidInputs).filter(
+		return inputs.map(DevScoreLogic::invalidInputs).filter(
 				invalidInputs -> {
 					return !invalidInputs.isEmpty();
 				});
@@ -54,14 +54,14 @@ public class RiskCalculatorLogic {
 	private static Double inputsToScore(Inputs inputs) {
 		Double result = 0.0;
 		if (areInputsValid(inputs)) {
-			result += RiskCalculatorPresenter.coverages.get(inputs.coverage);
+			result += DevScorePresenter.coverages.get(inputs.coverage);
 
 			result += (double) inputs.agility
-					/ RiskCalculatorPresenter.agilities.size();
+					/ DevScorePresenter.agilities.size();
 
 			result += Math.min(1.0, 3.0 / inputs.teamSize);
 
-			result += RiskCalculatorPresenter.PMTechnicalities
+			result += DevScorePresenter.PMTechnicalities
 					.get(inputs.PMTechnicality);
 
 			result += inputs.vaadinUsed ? 1.0 : 0.5;
@@ -74,8 +74,8 @@ public class RiskCalculatorLogic {
 
 	private static Inputs combineInputs(String coverage, Set<String> agility,
 			String teamSize, String PMTechnicality, Boolean vaadinUsed) {
-		return new RiskCalculatorLogic().new Inputs(coverage, agility,
-				teamSize, PMTechnicality, vaadinUsed);
+		return new DevScoreLogic().new Inputs(coverage, agility, teamSize,
+				PMTechnicality, vaadinUsed);
 	}
 
 	/**
