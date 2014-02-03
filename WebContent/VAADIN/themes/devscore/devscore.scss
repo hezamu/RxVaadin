@@ -4,9 +4,21 @@
 
 /* This contains all of your theme.*/
 /* If somebody wants to extend the theme she will include this mixin. */
-@mixin rxvaadin {
+@mixin devscore {
   /* Include all the styles from the reindeer theme */
   @include reindeer;
 
   /* Insert your theme rules here */
+   div.trafficlight-off {
+  	background-color: grey;
+  }
+  div.trafficlight-green {
+  	background-color: green;
+  }
+  div.trafficlight-yellow {
+  	background-color: yellow;
+  }
+  div.trafficlight-red {
+  	background-color: red;
+  }
 }

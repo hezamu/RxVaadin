@@ -15,7 +15,7 @@ public class TrafficLightIndicator extends CustomComponent implements
 
 	private TrafficLight value;
 	private boolean readOnly = false;
-	private Label label; // TODO
+	private Label label;
 
 	public TrafficLightIndicator() {
 		this(null);
@@ -23,6 +23,8 @@ public class TrafficLightIndicator extends CustomComponent implements
 
 	public TrafficLightIndicator(TrafficLight value) {
 		label = new Label();
+		label.setWidth("50px");
+		label.setHeight("50px");
 		setValue(value);
 		setCompositionRoot(label);
 	}
@@ -39,7 +41,15 @@ public class TrafficLightIndicator extends CustomComponent implements
 			throw new ReadOnlyException();
 
 		value = newValue;
-		label.setValue(value != null ? value.toString() : "");
+
+		if (value == TrafficLight.GREEN)
+			label.setStyleName("trafficlight-green");
+		else if (value == TrafficLight.YELLOW)
+			label.setStyleName("trafficlight-yellow");
+		else if (value == TrafficLight.RED)
+			label.setStyleName("trafficlight-red");
+		else
+			label.setStyleName("trafficlight-off");
 	}
 
 	@Override

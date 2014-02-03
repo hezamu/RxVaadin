@@ -1,9 +1,9 @@
 @import "addons.scss";
-@import "rxvaadin.scss";
+@import "devscore.scss";
 
 /* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
-/* The actual styles should be defined in rxvaadin.scss */
-.rxvaadin {
+/* The actual styles should be defined in devscore.scss */
+.devscore {
   @include addons;
-  @include rxvaadin;
+  @include devscore;
 }
