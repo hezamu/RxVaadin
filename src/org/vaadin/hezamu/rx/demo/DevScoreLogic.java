@@ -54,6 +54,7 @@ public class DevScoreLogic {
 	private static Double inputsToScore(Inputs inputs) {
 		Double result = 0.0;
 		if (areInputsValid(inputs)) {
+			// Each input is converted to a number between 0..1
 			result += DevScorePresenter.coverages.get(inputs.coverage);
 
 			result += (double) inputs.agility

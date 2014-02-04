@@ -75,7 +75,7 @@ public class DevScorePresenter {
 
 	private static void setupFaultLabelLogic(Label lblFault,
 			Observable<Double> scores, Observable<List<String>> faults) {
-		// Map the missing input name lists to a proper fault message
+		// Map the missing input name lists to proper fault messages
 		Observable<String> faultMessages = faults.map(names -> {
 			return "Please give valid a value for: "
 					+ names.stream().collect(Collectors.joining(", "));
