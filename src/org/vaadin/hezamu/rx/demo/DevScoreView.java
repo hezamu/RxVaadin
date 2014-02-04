@@ -22,18 +22,32 @@ public class DevScoreView extends Panel {
 	TrafficLightIndicator indicator;
 	Label lblScore;
 	Label lblFault;
+	private HorizontalLayout panelContent;
 
 	public DevScoreView() {
-		super("How likely is your team to deliver great software?",
-				new HorizontalLayout());
-		setSizeUndefined();
+		super("How likely is your team to deliver great software?");
+		addStyleName(DevScoreTheme.DEV_SCORE_VIEW);
+		setWidth("100%");
 
-		HorizontalLayout panelContent = (HorizontalLayout) getContent();
-		panelContent.setMargin(true);
-		panelContent.setSpacing(true);
+		setContent(panelContent = new HorizontalLayout() {
+			{
+				Panel leftPanel;
+				Panel rightPanel;
 
-		panelContent.addComponent(initLeftPanel());
-		panelContent.addComponent(initRightPanel());
+				setMargin(true);
+				setSpacing(true);
+				setWidth("100%");
+
+				addComponent(leftPanel = initLeftPanel());
+				addComponent(rightPanel = initRightPanel());
+
+				leftPanel.setWidth("100%");
+				setExpandRatio(leftPanel, 1);
+
+				rightPanel.setSizeUndefined();
+				setExpandRatio(rightPanel, 0);
+			}
+		});
 	}
 
 	private Panel initLeftPanel() {
@@ -67,8 +81,11 @@ public class DevScoreView extends Panel {
 		chkVaadin.setImmediate(true);
 		content.addComponent(chkVaadin);
 
-		lblFault = new Label();
-		content.addComponent(lblFault);
+		content.addComponent(lblFault = new Label() {
+			{
+				addStyleName(DevScoreTheme.FAULT);
+			}
+		});
 
 		return left;
 	}
@@ -83,6 +100,7 @@ public class DevScoreView extends Panel {
 		content.addComponent(indicator);
 
 		lblScore = new Label("Score");
+		lblScore.addStyleName(DevScoreTheme.SCORE);
 		content.addComponent(lblScore);
 
 		return right;

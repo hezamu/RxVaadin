@@ -25,6 +25,7 @@ public class TrafficLightIndicator extends CustomComponent implements
 		label = new Label();
 		label.setWidth("50px");
 		label.setHeight("50px");
+		label.addStyleName(DevScoreTheme.TRAFFIC_LIGHT);
 		setValue(value);
 		setCompositionRoot(label);
 	}
@@ -42,14 +43,15 @@ public class TrafficLightIndicator extends CustomComponent implements
 
 		value = newValue;
 
+		label.setStyleName(DevScoreTheme.TRAFFIC_LIGHT);
 		if (value == TrafficLight.GREEN)
-			label.setStyleName("trafficlight-green");
+			label.addStyleName(DevScoreTheme.GOOD);
 		else if (value == TrafficLight.YELLOW)
-			label.setStyleName("trafficlight-yellow");
+			label.addStyleName(DevScoreTheme.UGLY);
 		else if (value == TrafficLight.RED)
-			label.setStyleName("trafficlight-red");
+			label.addStyleName(DevScoreTheme.BAD);
 		else
-			label.setStyleName("trafficlight-off");
+			label.addStyleName(DevScoreTheme.OFF);
 	}
 
 	@Override
