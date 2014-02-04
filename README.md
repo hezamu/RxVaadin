@@ -19,3 +19,5 @@ This is a weekend project of the author, not an official add-on by Vaadin Ltd.
 - [Discussion at the Vaadin forum](https://vaadin.com/forum#!/thread/4776077/4776076)
 - [@henrimuurimaa](http://twitter.com/henrimuurimaa)
 - [GitHub Issues](https://github.com/hezamu/RxVaadin/issues)
+
+Thanks to [Marlon Richert](http://vaadin.com/marlon) for help with the demo theme.

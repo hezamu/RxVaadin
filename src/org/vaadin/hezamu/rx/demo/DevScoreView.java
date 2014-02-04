@@ -22,14 +22,15 @@ public class DevScoreView extends Panel {
 	TrafficLightIndicator indicator;
 	Label lblScore;
 	Label lblFault;
-	private HorizontalLayout panelContent;
+
+	// private HorizontalLayout panelContent;
 
 	public DevScoreView() {
 		super("How likely is your team to deliver great software?");
 		addStyleName(DevScoreTheme.DEV_SCORE_VIEW);
 		setWidth("100%");
 
-		setContent(panelContent = new HorizontalLayout() {
+		setContent(new HorizontalLayout() {
 			{
 				Panel leftPanel;
 				Panel rightPanel;
