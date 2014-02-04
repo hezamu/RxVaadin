@@ -43,6 +43,7 @@ public class TrafficLightIndicator extends CustomComponent implements
 
 		value = newValue;
 
+		label.setStyleName(DevScoreTheme.TRAFFIC_LIGHT);
 		if (value == TrafficLight.GREEN)
 			label.addStyleName(DevScoreTheme.GOOD);
 		else if (value == TrafficLight.YELLOW)
