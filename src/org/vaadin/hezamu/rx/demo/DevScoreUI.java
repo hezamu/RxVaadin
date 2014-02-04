@@ -7,16 +7,21 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
 @SuppressWarnings("serial")
-@Theme("devscore")
+@Theme(DevScoreTheme.THEME_NAME)
 public class DevScoreUI extends UI {
 	@Override
 	protected void init(VaadinRequest request) {
-		VerticalLayout mainContent = new VerticalLayout();
-		setContent(mainContent);
-
 		DevScoreView mainView = new DevScoreView();
-		mainContent.addComponent(mainView);
-		mainContent.setComponentAlignment(mainView, Alignment.MIDDLE_CENTER);
+		
+		setContent(new VerticalLayout() {
+			{
+				setMargin(true);
+
+				addComponent(mainView);
+				setComponentAlignment(mainView, Alignment.MIDDLE_CENTER);
+			}
+		});
+
 
 		DevScorePresenter.setupUILogic(mainView);
 	}

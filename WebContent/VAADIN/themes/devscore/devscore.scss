@@ -1,24 +1,70 @@
-/* Import the reindeer theme.*/
-/* This only allows us to use the mixins defined in it and does not add any styles by itself. */
 @import "../reindeer/reindeer.scss";
 
-/* This contains all of your theme.*/
-/* If somebody wants to extend the theme she will include this mixin. */
+$vaadin-red: rgb(239, 18, 107);
+$vaadin-orange: rgb(245, 122, 44);
+$vaadin-green: rgb(23, 181, 69);
+
 @mixin devscore {
-  /* Include all the styles from the reindeer theme */
   @include reindeer;
 
-  /* Insert your theme rules here */
-   div.trafficlight-off {
+  .traffic-light {
   	background-color: grey;
+  	border-radius: 50%;
   }
-  div.trafficlight-green {
-  	background-color: green;
+  
+  .traffic-light.good {
+  	background-color: $vaadin-green;
   }
-  div.trafficlight-yellow {
-  	background-color: yellow;
+  
+  .traffic-light.ugly {
+  	background-color: $vaadin-orange;
   }
-  div.trafficlight-red {
-  	background-color: red;
+  
+  .traffic-light.bad {
+  	background-color: $vaadin-red;
+  }
+  
+  .fault {
+    color: $vaadin-red;
+  }
+  
+  .score {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .v-panel {
+    &.dev-score-view {
+      @extend .v-panel-light;
+      @extend h1;
+      max-width: 45em;
+      overflow: visible !important;
+
+      .v-panel-content.v-panel-content-dev-score-view {
+        @extend .v-panel-content-light;
+        
+        > .v-layout {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+      .v-panel-caption.v-panel-caption-dev-score-view {
+        @extend h1;
+        @extend .v-caption-h1;
+        @extend .v-panel-caption-light;
+        text-indent: -2px;
+      }
+
+      .v-panel-deco.v-panel-deco-dev-score-view {
+        @extend .v-panel-deco-light;
+      }
+    }
+
+    .v-panel-caption {
+      @extend .v-label;
+      @extend .v-caption;
+      overflow: visible !important;
+    }
   }
 }
