@@ -85,7 +85,7 @@ public class DevScorePresenter {
 		RxVaadin.follow(lblFault, faultMessages);
 
 		// Make a valid score clear the fault label
-		RxVaadin.clearBy(lblFault, scores);
+		RxVaadin.clearBy(lblFault, scores, "&nbsp;");
 	}
 
 	private static void setupScoreLabelLogic(Label lblScore,
@@ -99,7 +99,7 @@ public class DevScorePresenter {
 		RxVaadin.follow(lblScore, scoreStrings);
 
 		// Make a fault clear the score label
-		RxVaadin.clearBy(lblScore, faults);
+		RxVaadin.clearBy(lblScore, faults, "&nbsp;");
 	}
 
 	private static void setupTrafficLightLogic(TrafficLightIndicator indicator,

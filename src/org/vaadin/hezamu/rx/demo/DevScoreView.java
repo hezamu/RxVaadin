@@ -1,5 +1,6 @@
 package org.vaadin.hezamu.rx.demo;
 
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.HorizontalLayout;
@@ -82,7 +83,7 @@ public class DevScoreView extends Panel {
 		chkVaadin.setImmediate(true);
 		content.addComponent(chkVaadin);
 
-		content.addComponent(lblFault = new Label() {
+		content.addComponent(lblFault = new Label("", ContentMode.HTML) {
 			{
 				addStyleName(DevScoreTheme.FAULT);
 			}
@@ -100,7 +101,7 @@ public class DevScoreView extends Panel {
 		indicator = new TrafficLightIndicator();
 		content.addComponent(indicator);
 
-		lblScore = new Label("Score");
+		lblScore = new Label("Score", ContentMode.HTML);
 		lblScore.addStyleName(DevScoreTheme.SCORE);
 		content.addComponent(lblScore);
 
