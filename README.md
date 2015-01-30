@@ -8,8 +8,6 @@ This repository includes a [demo application](https://github.com/hezamu/RxVaadin
 
 If you want to run the demo yourself, just do a checkout and run it in a Java8 compliant servlet container. I wrote this in Eclipse Kepler and Jetty using the very nice [Run Jetty](http://code.google.com/p/run-jetty-run) plugin.
 
-Instructions to get Java 8 Early Access working with Eclipse can be found [here](https://wiki.eclipse.org/JDT/Eclipse_Java_8_Support_%28BETA%29)
-
 ## Affliation
 
 This is a weekend project of the author, not an official add-on by Vaadin Ltd.

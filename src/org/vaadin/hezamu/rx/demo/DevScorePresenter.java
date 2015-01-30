@@ -13,7 +13,10 @@ import org.vaadin.hezamu.rx.demo.TrafficLightIndicator.TrafficLight;
 
 import rx.Observable;
 
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 
 @SuppressWarnings("serial")
 public class DevScorePresenter {
@@ -71,6 +74,13 @@ public class DevScorePresenter {
 		setupScoreLabelLogic(ui.lblScore, scores, faults);
 
 		setupTrafficLightLogic(ui.indicator, scores, faults);
+		
+		setupButtonLogic(ui.button);
+	}
+
+	private static void setupButtonLogic(Button button) {
+		RxVaadin.clicks(button).subscribe(e -> 
+			Notification.show("Button clicked", Notification.Type.TRAY_NOTIFICATION));
 	}
 
 	private static void setupFaultLabelLogic(Label lblFault,

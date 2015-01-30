@@ -9,6 +9,9 @@ import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
 import com.vaadin.data.Property.ValueChangeNotifier;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 
 /**
  * An example on how to convert the event streams of Vaadin listeners to
@@ -16,8 +19,24 @@ import com.vaadin.data.Property.ValueChangeNotifier;
  * 
  * @author henri@vaadin.com
  */
-@SuppressWarnings("serial")
 public class RxVaadin {
+	/**
+	 * Get a {@link Observable} corresponding with the click stream of a
+	 * {@link Button}.
+	 */
+	public static Observable<ClickEvent> clicks(Button button) {
+		return Observable.create(new OnSubscribeFunc<ClickEvent>() {
+			public Subscription onSubscribe(
+					final Observer<? super ClickEvent> observer) {
+				final ClickListener listener = e -> observer.onNext(e);
+
+				button.addClickListener(listener);
+
+				return () ->  button.removeClickListener(listener);
+			}
+		});
+	}
+			
 	/**
 	 * Get a {@link Observable} corresponding with the event stream of a
 	 * {@link ValueChangeNotifier}.
@@ -27,20 +46,11 @@ public class RxVaadin {
 		return Observable.create(new OnSubscribeFunc<ValueChangeEvent>() {
 			public Subscription onSubscribe(
 					final Observer<? super ValueChangeEvent> observer) {
-				final ValueChangeListener listener = new ValueChangeListener() {
-					@Override
-					public void valueChange(ValueChangeEvent event) {
-						observer.onNext(event);
-					}
-				};
+				final ValueChangeListener listener = e -> observer.onNext(e);
 
 				notifier.addValueChangeListener(listener);
 
-				return new Subscription() {
-					public void unsubscribe() {
-						notifier.removeValueChangeListener(listener);
-					}
-				};
+				return () -> notifier.removeValueChangeListener(listener);
 			}
 		});
 	}

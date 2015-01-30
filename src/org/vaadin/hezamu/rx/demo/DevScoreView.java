@@ -1,6 +1,7 @@
 package org.vaadin.hezamu.rx.demo;
 
 import com.vaadin.shared.ui.label.ContentMode;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.HorizontalLayout;
@@ -24,7 +25,7 @@ public class DevScoreView extends Panel {
 	Label lblScore;
 	Label lblFault;
 
-	// private HorizontalLayout panelContent;
+	Button button;
 
 	public DevScoreView() {
 		super("How likely is your team to deliver great software?");
@@ -89,6 +90,8 @@ public class DevScoreView extends Panel {
 			}
 		});
 
+		content.addComponent(button = new Button("Click me"));
+		
 		return left;
 	}
 

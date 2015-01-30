@@ -22,7 +22,6 @@ public class DevScoreUI extends UI {
 			}
 		});
 
-
 		DevScorePresenter.setupUILogic(mainView);
 	}
 }
