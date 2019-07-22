@@ -115,9 +115,14 @@ public class DevScorePresenter {
 	private static void setupTrafficLightLogic(TrafficLightIndicator indicator,
 			Observable<Double> scores, Observable<List<String>> faults) {
 		// Map the score values into traffic light levels.
-		Observable<TrafficLight> trafficLights = scores.map(score -> {
-			return score <= 25 ? TrafficLight.RED
-					: (score <= 75 ? TrafficLight.YELLOW : TrafficLight.GREEN);
+		Observable<TrafficLightIndicator.TrafficLight> trafficLights = scores.map(score -> {
+			if(score <= 25){
+				return TrafficLight.RED;
+			}else if(score <= 75){
+				return TrafficLight.YELLOW;
+			}else{
+				return TrafficLight.GREEN;
+			}
 		});
 
 		// Connect the traffic light indicator to the light level stream
